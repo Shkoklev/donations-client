@@ -1,0 +1,10 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.centar {
+    width: 800px;
+    margin-top: 180px;
+    color: red;
+}

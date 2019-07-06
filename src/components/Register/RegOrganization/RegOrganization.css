@@ -1,0 +1,38 @@
+.RegisterOrg {
+    width: 470px;
+    height: 370px;
+    background-color: whitesmoke;
+    align-content: inherit;
+    margin: auto;
+    border: 3px solid black;
+    text-align: center;
+    border-radius: 15px;
+
+
+}
+
+@media (max-width: 730px) {
+    .RegisterOrg {
+        width: 300px;
+        height: 420px;
+    }
+
+    .input {
+        width: 140px;
+        height: 50px;
+        padding: 10px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 500px) {
+    .RegisterOrg {
+        width: 250px;
+        height: 380px;
+    }
+
+    .input {
+        width: 100px;
+        height: 40px;
+    }
+}

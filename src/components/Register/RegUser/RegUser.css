@@ -1,0 +1,38 @@
+.RegisterUser {
+    width: 450px;
+    height: 300px;
+    background-color: whitesmoke;
+    align-content: inherit;
+    margin: auto;
+    border: 3px solid black;
+    text-align: center;
+    border-radius: 15px;
+
+
+}
+
+@media (max-width: 730px) {
+    .RegisterUser {
+        width: 300px;
+        height: 420px;
+    }
+
+    .input {
+        width: 140px;
+        height: 50px;
+        padding: 10px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 500px) {
+    .RegisterUser {
+        width: 250px;
+        height: 380px;
+    }
+
+    .input {
+        width: 100px;
+        height: 40px;
+    }
+}
