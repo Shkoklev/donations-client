@@ -3,8 +3,8 @@ import {Link} from "react-router-dom";
 import logo from "../../donate-now-button.png";
 import {getJwt, removeJwt} from "../../helpers/jwt";
 import axios from "axios";
-import {logoutDonor} from "../../repository/Donor";
-import {logoutOrganization} from "../../repository/Organization";
+import {getLoggedDonor, logoutDonor} from "../../repository/Donor";
+import {getLoggedOrganization, logoutOrganization} from "../../repository/Organization";
 import './Navbar.css'
 
 class Navbar extends Component {
@@ -42,11 +42,7 @@ class Navbar extends Component {
 
     getLoggedDonor() {
         const jwtoken = getJwt();
-        axios.get('http://localhost:8080/donors/loggedDonor', {
-            headers: {
-                Authorization: `Bearer ${jwtoken}`
-            }
-        }).then(res => {
+        getLoggedDonor(jwtoken).then(res => {
             this.setState({
                 user: res.data,
                 loggedAsDonor: true,
@@ -62,11 +58,7 @@ class Navbar extends Component {
 
     getLoggedOrganization() {
         const jwtoken = getJwt();
-        axios.get('http://localhost:8080/organizations/loggedOrganization', {
-            headers: {
-                Authorization: `Bearer ${jwtoken}`
-            }
-        }).then(res => {
+        getLoggedOrganization(jwtoken).then(res => {
             this.setState({
                 user: res.data,
                 loggedAsDonor: false,
@@ -110,14 +102,14 @@ class Navbar extends Component {
 
         if (this.state.loggedAsDonor) {
             headerPanel = <ul className="nav navbar-nav ml-auto">
-                <li className="nav-item dropdown weak">
+                <li className="nav-item dropdown weak navli">
                     <button href="#" className="btn btn-sm rounded btn-light nav-link dropdown-toggle"
                             data-toggle="dropdown">
                         <i className="fa fa-user m-1"></i>
                         {this.state.user.firstName} {this.state.user.lastName}
                     </button>
                     <div className="dropdown-menu dropdown-menu-right">
-                        <Link className="dropdown-item" to="/donor-profile">Профил</Link>
+                        <Link className="dropdown-item" to="/donor/profile">Профил</Link>
                         <a href="#" className="dropdown-item">Мои донации</a>
                         <div className="dropdown-divider"></div>
                         <a href="#" onClick={this.logoutDonor} className="dropdown-item">Logout</a>
@@ -126,15 +118,15 @@ class Navbar extends Component {
             </ul>
         } else if (this.state.loggedAsOrganization) {
             headerPanel = <ul className="nav navbar-nav ml-auto">
-                <li className="nav-item dropdown weak">
+                <li className="nav-item dropdown weak navli">
                     <button href="#" className="btn btn-sm rounded btn-light nav-link dropdown-toggle"
                             data-toggle="dropdown">
-                        <i className="fa fa-user m-1"></i>
+                        <i className="fa fa-users m-1"></i>
                         {this.state.user.name}
                     </button>
                     <div className="dropdown-menu dropdown-menu-right">
-                        <a href="#" className="dropdown-item">Профил</a>
-                        <a href="#" className="dropdown-item">Мои донации</a>
+                        <Link className="dropdown-item" to="/organization/profile">Профил</Link>
+                        <Link to="/organization/demands" className="dropdown-item">Потреби</Link>
                         <div className="dropdown-divider"></div>
                         <a href="#" onClick={this.logoutOrganization} className="dropdown-item">Logout</a>
                     </div>
@@ -142,10 +134,10 @@ class Navbar extends Component {
             </ul>
         } else {
             headerPanel = <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
+                <li className="nav-item navli">
                     <Link className="nav-link text-white" to="/register">Регистрирај се</Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item navli">
                     <Link className="nav-link text-white" to="/login/donor">Најави се</Link>
                 </li>
             </ul>
@@ -163,19 +155,19 @@ class Navbar extends Component {
 
                     <div className="collapse navbar-collapse" id="mobile-nav">
                         <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
+                            <li className="nav-item navli">
                                 <Link className="nav-link text-white" to="/about-us"> За нас
                                 </Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item navli">
                                 <Link className="nav-link text-white" to="/organizations"> Организации
                                 </Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item navli">
                                 <Link className="nav-link text-white" to="/contact"> Контакт
                                 </Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item navli">
                                 <button className="btn" style={{background: "#3DBD5D", color: "white"}}>Донирај сега
                                 </button>
                             </li>

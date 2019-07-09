@@ -1,4 +1,4 @@
-li:not(.weak):hover {
+.navli:not(.weak):hover {
     box-shadow: 0 0 8px 2px white;
     transform: scale(1.1);
 }

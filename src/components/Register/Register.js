@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import RegUser from './RegUser/RegUser';
 import RegOrgPr from './RegOrganization/RegOrganization';
-import './Register..css';
+import './Register.css';
 
 class Register extends Component {
 

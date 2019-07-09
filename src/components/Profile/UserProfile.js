@@ -69,6 +69,7 @@ class UserProfile extends Component {
     };
 
     render() {
+
         return (
             <div className="container-fluid wrapper">
                 <div className="container">
@@ -110,7 +111,7 @@ class UserProfile extends Component {
                                 </div>
                                 <div className="form-group">
                                     <span
-                                        className="col-lg-3">Телефонски
+                                        className="col-lg-3"><i className="fa fa-phone m-1"></i>Телефонски
                                         број: {this.state.loggedDonor.phone}</span>
                                     <div className="col-lg-8 mt-2">
                                         <input className="form-control" type="text"
@@ -120,7 +121,7 @@ class UserProfile extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label className="col-lg-3 control-label">Email:</label>
+                                    <label className="col-lg-3 control-label"><i className="fa fa-envelope m-1"></i>Email:</label>
                                     <div className="col-lg-8">
                                         <input className="form-control" type="email"
                                                id="email"

@@ -4,7 +4,7 @@ const aboutUs = (props) => {
 
     return (
 
-        <div className="aboutUs">
+        <div className="wrapper">
             <div className="dark-overlay landing-inner text-light">
                 <div className="container">
                     <div className="row">

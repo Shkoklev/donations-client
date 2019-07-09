@@ -1,0 +1,11 @@
+#tabla {
+    border: 1px solid lightskyblue;
+}
+#tabla > thead > tr > th,
+#tabla > tbody > tr > th,
+#tabla > tfoot > tr > th,
+#tabla > thead > tr > td,
+#tabla > tbody > tr > td,
+#tabla > tfoot > tr > td {
+    border: 1px solid lightskyblue;
+}

@@ -3,3 +3,21 @@
     padding-top: 15px;
     margin: auto;
 }
+
+#page-numbers {
+    list-style: none;
+    display: flex;
+    padding-bottom: 40px;
+}
+
+#page-numbers > li {
+    padding: 2px 10px 2px 10px;
+    color: mediumslateblue;
+    border: 1px solid lightblue;
+    user-select: none;
+    cursor: pointer;
+}
+
+#page-numbers > li:hover {
+    background-color: mediumblue;
+}

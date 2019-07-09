@@ -8,7 +8,7 @@ class Error extends Component {
         const message = this.getMessage();
 
         return (
-            <div className="wrapper">
+            <div className="wrapper pos">
                 <div className="centar">
                     <h1 className="text-center display-3 text-dark">404</h1>
                     <h1 className="text-center">{message}</h1>

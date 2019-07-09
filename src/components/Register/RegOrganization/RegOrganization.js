@@ -19,7 +19,6 @@ class regOrg extends Component {
         try {
             this.verifyPassword(formSubmitEvent.target.password.value, formSubmitEvent.target.password2.value);
         } catch (error) {
-            console.log(error);
             return {};
         }
         this.register({
