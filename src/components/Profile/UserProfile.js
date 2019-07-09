@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {getJwt} from "../../helpers/jwt";
 import {editDonor, getLoggedDonor} from "../../repository/Donor";
+import pic from "../../don-profile.png";
+import "./UserProfile.css"
 
 class UserProfile extends Component {
     constructor(props) {
@@ -77,10 +79,19 @@ class UserProfile extends Component {
                     <div className="row mt-2 mb-5">
                         <div className="col-md-3">
                             <div className="text-center">
-                                <img src={this.state.loggedDonor.pictureUrl} className="avatar img-circle"
+                                <img src={this.state.loggedDonor.pictureUrl} id="avatar"
                                      alt="avatar"/>
                                 <h6>Промени фотографија</h6>
                                 <input type="file" className="form-control"/>
+                            </div>
+                            <div className="p-3">
+                                <h6>Поени од донации: {this.state.loggedDonor.points}</h6>
+                                <h6>Број на активни донации: {this.state.loggedDonor.numberOfPendingDonations}</h6>
+                                <h6>Неуспешни донации: {this.state.loggedDonor.failedConsecutiveDonations}</h6>
+                                <div className="text-center">
+                                    <img src={pic} id="donation-image"
+                                         alt="donations"/>
+                                </div>
                             </div>
                         </div>
 
@@ -138,7 +149,7 @@ class UserProfile extends Component {
                                         />
                                     </div>
                                 </div>
-                                <div className="form-group">
+                                <div className="form-group mb-5">
                                     <div className="col-md-8 mb-3 text-center">
                                         <button type="submit" className="btn btn-block btn-success"
                                                 value="Зачувај податоци">

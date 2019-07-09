@@ -110,7 +110,7 @@ class Navbar extends Component {
                     </button>
                     <div className="dropdown-menu dropdown-menu-right">
                         <Link className="dropdown-item" to="/donor/profile">Профил</Link>
-                        <a href="#" className="dropdown-item">Мои донации</a>
+                        <Link to="/donor/donations" className="dropdown-item">Мои донации</Link>
                         <div className="dropdown-divider"></div>
                         <a href="#" onClick={this.logoutDonor} className="dropdown-item">Logout</a>
                     </div>
@@ -125,8 +125,8 @@ class Navbar extends Component {
                         {this.state.user.name}
                     </button>
                     <div className="dropdown-menu dropdown-menu-right">
-                        <Link className="dropdown-item" to="/organization/profile">Профил</Link>
                         <Link to="/organization/demands" className="dropdown-item">Потреби</Link>
+                        <Link className="dropdown-item" to="/organization/profile">Донации</Link>
                         <div className="dropdown-divider"></div>
                         <a href="#" onClick={this.logoutOrganization} className="dropdown-item">Logout</a>
                     </div>

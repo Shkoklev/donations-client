@@ -29,6 +29,7 @@ class OrganizationsPage extends Component {
         return (
             <div className="container-fluid wrapper">
                 <div className="container">
+                    <h2 className="text-center">Организации</h2>
                     <OrganizationCategories categories={this.state.categories}/>
                 </div>
             </div>

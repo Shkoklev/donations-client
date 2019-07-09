@@ -14,6 +14,7 @@ import LoginDonor from "./components/Login/LoginDonor";
 import LoginOrganization from "./components/Login/LoginOrganization";
 import OrganizationProfile from "./components/Profile/OrganizationProfile";
 import DemandsForLoggedOrganization from "./components/Demands/DemandsForLoggedOrganization";
+import DonorDonations from "./components/Donations/DonorDonations";
 
 
 class App extends Component {
@@ -36,6 +37,7 @@ class App extends Component {
                         <Route exact path="/organization/profile" component={OrganizationProfile}/>
                         <Route exact path="/organization/demands" component={DemandsForLoggedOrganization}/>
                         <Route exact path="/organizations/:id/demands" component={DemandsByOrganization}/>
+                        <Route exact path="/donor/donations" component={DonorDonations}/>
                         <Route render={(props) => <Error {...props} pathDoesNotExist="Страницата не е пронајдена."/>}/>
                     </Switch>
                     <Footer/>

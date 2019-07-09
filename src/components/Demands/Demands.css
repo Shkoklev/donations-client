@@ -9,3 +9,8 @@
 #tabla > tfoot > tr > td {
     border: 1px solid lightskyblue;
 }
+
+#quantity {
+    width: 100px;
+    border: 1px solid black;
+}

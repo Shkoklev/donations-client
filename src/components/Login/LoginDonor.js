@@ -31,6 +31,7 @@ class LoginDonor extends Component {
                 }
                 var token = response.headers.get('authorization');
                 localStorage.setItem('jwtToken', token);
+                this.props.history.push('/organizations');
             })
             .catch(err => {
                 const message = "Внесовте погрешни информации.";
@@ -48,7 +49,8 @@ class LoginDonor extends Component {
                         <div className="col-md-6 m-auto">
                             <h3 className="text-center mb-3 font-weight-bold text-dark">DONOR LOGIN</h3>
                             <div className="text-center">
-                                <img src={pic} alt="" className="rounded-circle mb-3" style={{width: '200px', height: '200px'}}/>
+                                <img src={pic} alt="" className="rounded-circle mb-3"
+                                     style={{width: '200px', height: '200px'}}/>
                             </div>
                             {this.state.validationMessage &&
                             <h5 className="text-danger text-center">{this.state.validationMessage}</h5>
@@ -68,8 +70,7 @@ class LoginDonor extends Component {
                                 </div>
                                 <div>
                                     <button type="submit"
-                                            className="btn btn-success mt-4 btn-block float-right">Најавете
-                                        се
+                                            className="btn btn-success mt-4 btn-block float-right">Најавете се
                                     </button>
                                     <NavLink to="/login/organization" style={{textDecoration: 'none'}}>
                                         <button className="btn btn-primary mt-4 btn-block float-left">
