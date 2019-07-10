@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {registerDonor} from "../../../repository/Donor";
+import {withRouter} from "react-router-dom";
 
 class RegisterUser extends Component {
 
@@ -17,7 +18,6 @@ class RegisterUser extends Component {
         try {
             this.verifyPassword(formSubmitEvent.target.password.value, formSubmitEvent.target.password2.value);
         } catch (error) {
-            console.log(error);
             return {};
         }
         this.register({
@@ -36,6 +36,7 @@ class RegisterUser extends Component {
                 if (!response.ok) {
                     throw response
                 }
+                this.props.history.push('/login/donor');
             })
             .catch(err => {
                 err.text().then(errorMessage => {
@@ -126,4 +127,4 @@ class RegisterUser extends Component {
     }
 }
 
-export default RegisterUser;
+export default withRouter(RegisterUser);

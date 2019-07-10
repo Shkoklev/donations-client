@@ -31,6 +31,7 @@ class LoginOrganization extends Component {
                 }
                 var token = response.headers.get('authorization');
                 localStorage.setItem('jwtToken', token);
+                window.location.href = '/organization/profile';
             })
             .catch(err => {
                 const message = "Внесовте погрешни информации.";

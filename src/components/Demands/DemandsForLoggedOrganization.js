@@ -31,6 +31,7 @@ class DemandsForLoggedOrganization extends Component {
     componentDidMount() {
         this.getLoggedOrganization();
         this.loadDemandCategories();
+        this.loadDemandsByCategory(1);
     }
 
     getLoggedOrganization() {
@@ -79,7 +80,7 @@ class DemandsForLoggedOrganization extends Component {
             .then(data => {
                 this.setState({
                     demandsByCategory: data
-                });
+                }, () => this.loadDemandById(this.state.demandsByCategory[0].id));
             });
     };
 
@@ -97,7 +98,7 @@ class DemandsForLoggedOrganization extends Component {
     showDemandsByOrganization = () => {
         return this.state.demands.map((d) => {
             return (
-                <tr key={d.OrganizationDemand.demand.id}>
+                <tr className="table-rows" key={d.OrganizationDemand.demand.id}>
                     <td>{d.OrganizationDemand.demand.category.name}</td>
                     <td>{d.OrganizationDemand.demand.name}</td>
                     <td> {this.state.clickedDemandId !== d.OrganizationDemand.demand.id &&
@@ -107,7 +108,8 @@ class DemandsForLoggedOrganization extends Component {
                     }
                         {this.state.clickedDemandId === d.OrganizationDemand.demand.id &&
                         <div>
-                            <input value={this.state.demandQuantity} onChange={this.onInsertDemandQuantity}/>
+                            <input id="quantity" value={this.state.demandQuantity}
+                                   onChange={this.onInsertDemandQuantity}/>
                             <span className="p-2">{this.state.demandUnit}</span>
                             <div>
                                 <button onClick={this.onEditDemand} className="btn btn-success mt-1">Внеси</button>
@@ -119,11 +121,11 @@ class DemandsForLoggedOrganization extends Component {
                         }
                     </td>
                     <td>
-                        <button onClick={() => this.onChangeDemandQuantity(d.OrganizationDemand.demand.id)}
-                                className="btn btn-primary btn-block">Промени
+                        <button onClick={() => this.onChangeDemandQuantity(d.OrganizationDemand.demand.id, d.OrganizationDemand.quantity)}
+                                className="btn btn-sm btn-primary btn-block">Промени
                         </button>
                         <button onClick={() => this.onDeleteDemand(d.OrganizationDemand.demand.id)}
-                                className="btn btn-danger btn-block">Избриши
+                                className="btn btn-sm btn-danger btn-block">Избриши
                         </button>
                     </td>
                 </tr>
@@ -132,10 +134,11 @@ class DemandsForLoggedOrganization extends Component {
         });
     };
 
-    onChangeDemandQuantity = (demandId) => {
+    onChangeDemandQuantity = (demandId, quantity) => {
         this.setState({
             clickedDemandId: demandId,
-            addDemandPanel: false
+            addDemandPanel: false,
+            demandQuantity: quantity
         }, () => this.loadDemandById(demandId))
     };
 
@@ -153,7 +156,8 @@ class DemandsForLoggedOrganization extends Component {
     onAddDemand = () => {
         this.setState({
             addDemandPanel: true,
-            clickedDemandId: -1
+            clickedDemandId: -1,
+            demandQuantity: 0
         });
     };
 
@@ -254,7 +258,7 @@ class DemandsForLoggedOrganization extends Component {
             var showDemandCategories = this.showDemandCategories();
             var showDemandsByCategory = this.showDemandsByCategory();
             addDemand = (
-                <tr>
+                <tr className="table-rows">
                     <td>
                         <select onChange={this.onChangeDemandCategory} type="text"
                                 className="form-control form-control-lg">
@@ -269,7 +273,8 @@ class DemandsForLoggedOrganization extends Component {
                     </td>
                     <td>
                         <span>
-                            <input value={this.state.demandQuantity} onChange={this.onInsertDemandQuantity}/>
+                            <input id="quantity" value={this.state.demandQuantity}
+                                   onChange={this.onInsertDemandQuantity}/>
                             <span className="p-2">{this.state.demandUnit}</span>
                             {this.state.validationMessage &&
                             <div className="text-danger text-center">{this.state.validationMessage}</div>

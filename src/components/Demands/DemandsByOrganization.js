@@ -95,7 +95,7 @@ class DemandsByOrganization extends Component {
             this.setState({
                 loggedAsOrganization: true,
                 loggedAsDonor: false
-            }, () => console.log(this.state.loggedAsOrganization));
+            });
         })
             .catch(err => {
                 this.setState({
@@ -117,7 +117,7 @@ class DemandsByOrganization extends Component {
     showDemandsByOrganization = () => {
         return this.state.demands.map((d) => {
             return (
-                <tr key={d.OrganizationDemand.demand.id}>
+                <tr className="table-rows" key={d.OrganizationDemand.demand.id}>
                     <td>{d.OrganizationDemand.demand.name}</td>
                     <td>
                         <span>
@@ -202,7 +202,7 @@ class DemandsByOrganization extends Component {
                 }, () => {
                     setTimeout(() => {
                         this.setState({modalIsOpen: false});
-                    }, 1000);
+                    }, 800);
                 });
             }).catch(err => {
             err.text().then(errorMessage => {

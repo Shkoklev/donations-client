@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {getAllOrganizationCategories} from "../../../repository/OrganizationCategory";
 import {registerOrganization} from "../../../repository/Organization";
+import {withRouter} from "react-router-dom";
 
 class regOrg extends Component {
 
@@ -36,6 +37,7 @@ class regOrg extends Component {
                 if (!response.ok) {
                     throw response
                 }
+                this.props.history.push('/login/organization');
             })
             .catch(err => {
                 err.text().then(errorMessage => {
@@ -126,4 +128,4 @@ class regOrg extends Component {
     }
 }
 
-export default regOrg;
+export default withRouter(regOrg);

@@ -16,14 +16,6 @@ export const getDemandsForOrganization = (organizationId) => {
     return axios.get(`http://localhost:8080/organizations/${organizationId}/demands`);
 };
 
-export const getSuccessfulDonationsForOrganization = (organizationId) => {
-    return axios.get(`http://localhost:8080/organizations/${organizationId}/successful_donations`);
-};
-
-export const getPendingDonationsForOrganization = (organizationId) => {
-    return axios.get(`http://localhost:8080/organizations/${organizationId}/pending_donations`);
-};
-
 export const getOrganizationsBySearchQuery = (query) => {
     return axios.get(`http://localhost:8080/organizations/search?query=${query}`);
 };

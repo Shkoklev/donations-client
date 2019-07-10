@@ -62,7 +62,6 @@ class UserProfile extends Component {
                 err.text().then(errorMessage => {
                     const bodyAsJson = JSON.parse(errorMessage);
                     const message = bodyAsJson.message;
-                    console.log(message);
                     this.setState({
                         validationMessage: message
                     });
@@ -97,7 +96,7 @@ class UserProfile extends Component {
 
                         <div className="col-md-9 personal-info">
 
-                            <h3>Лични податоци</h3>
+                            <h3 className="ml-3">Лични податоци</h3>
 
                             <form onSubmit={this.onFormSubmit} className="form-horizontal" role="form">
                                 <div className="form-group">

@@ -31,7 +31,7 @@ class LoginDonor extends Component {
                 }
                 var token = response.headers.get('authorization');
                 localStorage.setItem('jwtToken', token);
-                this.props.history.push('/organizations');
+                window.location.href = '/organizations';
             })
             .catch(err => {
                 const message = "Внесовте погрешни информации.";

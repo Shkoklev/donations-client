@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import logo from "../../donate-now-button.png";
 import {getJwt, removeJwt} from "../../helpers/jwt";
-import axios from "axios";
 import {getLoggedDonor, logoutDonor} from "../../repository/Donor";
 import {getLoggedOrganization, logoutOrganization} from "../../repository/Organization";
 import './Navbar.css'
@@ -125,8 +124,8 @@ class Navbar extends Component {
                         {this.state.user.name}
                     </button>
                     <div className="dropdown-menu dropdown-menu-right">
-                        <Link to="/organization/demands" className="dropdown-item">Потреби</Link>
-                        <Link className="dropdown-item" to="/organization/profile">Донации</Link>
+                        <Link to="/organization/profile" className="dropdown-item">Потреби</Link>
+                        <Link className="dropdown-item" to="/organization/donations">Донации</Link>
                         <div className="dropdown-divider"></div>
                         <a href="#" onClick={this.logoutOrganization} className="dropdown-item">Logout</a>
                     </div>

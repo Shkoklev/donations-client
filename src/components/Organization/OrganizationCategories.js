@@ -25,7 +25,7 @@ class OrganizationCategories extends Component {
                     <li key={category.id} className="navli">
                         <input onChange={this.onCategoryChanged} type="radio" id={category.id}
                                name="userType" value={category.id}/>
-                        <label htmlFor={category.name}>{category.name}</label>
+                        <label className="categories p-1" htmlFor={category.name}>{category.name}</label>
                         <div></div>
                     </li>
                 )
@@ -46,7 +46,7 @@ class OrganizationCategories extends Component {
                                             <li key={999} className="navli">
                                                 <input onChange={this.onCategoryChanged} type="radio" id={-1}
                                                        name="userType" value={-1}/>
-                                                <label htmlFor="сите">Сите</label>
+                                                <label className="categories p-1" htmlFor="сите">Сите</label>
                                                 <div></div>
                                             </li>
                                             {categories}

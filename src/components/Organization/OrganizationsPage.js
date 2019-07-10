@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import OrganizationCategories from "./OrganizationCategories";
 import {getAllOrganizationCategories} from "../../repository/OrganizationCategory";
+import {withRouter} from "react-router-dom";
 
 
 class OrganizationsPage extends Component {
@@ -37,4 +38,4 @@ class OrganizationsPage extends Component {
     }
 }
 
-export default OrganizationsPage;
+export default withRouter(OrganizationsPage);

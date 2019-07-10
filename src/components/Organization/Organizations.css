@@ -21,3 +21,11 @@
 #page-numbers > li:hover {
     background-color: mediumblue;
 }
+
+.categories {
+    font-size: 22px;
+}
+
+.table-rows {
+    font-size: 20px;
+}

@@ -75,7 +75,7 @@ class Organizations extends Component {
     showOrganizations = () => {
         var organizations = this.state.organizations.map((org) => {
             return (
-                <tr key={org.id}>
+                <tr className="table-rows" key={org.id}>
                     <td>{org.name}</td>
                     <td>{org.phone}</td>
                     <td>
@@ -142,7 +142,7 @@ class Organizations extends Component {
                     <button className="btn btn-success m-1" type="submit">Пребарај</button>
                 </form>
                 <div className="mb-5">
-                    <table className="table table-bordered">
+                    <table className="table table-bordered" id="tabla">
                         <thead className="thead-light">
                         <tr>
                             <th>Име на институција</th>
