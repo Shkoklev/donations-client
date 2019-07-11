@@ -3,7 +3,12 @@ import {getJwt} from "../../helpers/jwt";
 import {getLoggedOrganization} from "../../repository/Organization";
 import './OrganizationDonations.scss';
 import ReactModal from 'react-modal';
-import {acceptDonation, declineDonation, getPendingDonationsForOrganization} from "../../repository/Donation";
+import {
+    acceptDonation,
+    declineDonation,
+    getPendingDonationsForOrganization,
+    getSuccessfulDonationsForOrganization
+} from "../../repository/Donation";
 
 const customStyles = {
     content: {
@@ -57,6 +62,17 @@ class OrganizationDonations extends Component {
     loadPendingDonations = (jwt) => {
         let organizationId = this.state.loggedOrganization.id;
         getPendingDonationsForOrganization(organizationId, jwt)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    donations: data
+                })
+            });
+    };
+
+    loadSuccessfulDonations = (jwt) => {
+        let organizationId = this.state.loggedOrganization.id;
+        getSuccessfulDonationsForOrganization(organizationId, jwt)
             .then(response => response.json())
             .then(data => {
                 this.setState({

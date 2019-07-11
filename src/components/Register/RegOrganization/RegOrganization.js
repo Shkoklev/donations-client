@@ -89,6 +89,7 @@ class regOrg extends Component {
                 <form onSubmit={this.onFormSubmit} className="mb-5">
                     <div className="form-group">
                         <input type="text" className="form-control form-control-lg" placeholder="Име на Организацијата"
+                               autoComplete="off"
                                name="name" required/>
                     </div>
                     <div className="form-group">
@@ -102,18 +103,22 @@ class regOrg extends Component {
                     </div>
                     <div className="form-group">
                         <input type="text" className="form-control form-control-lg" placeholder="Телефонски број"
+                               autoComplete="off"
                                name="phone" required/>
                     </div>
                     <div className="form-group">
                         <input type="email" className="form-control form-control-lg" placeholder="Email Адреса"
+                               autoComplete="off"
                                name="email" required/>
                     </div>
                     <div className="form-group">
                         <input type="password" className="form-control form-control-lg" placeholder="Лозинка"
+                               autoComplete="off"
                                name="password" required/>
                     </div>
                     <div className="form-group">
                         <input type="password" className="form-control form-control-lg" placeholder="Потврди лозинка"
+                               autoComplete="off"
                                name="password2" required/>
                     </div>
 

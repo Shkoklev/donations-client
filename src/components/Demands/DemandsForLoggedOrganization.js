@@ -8,7 +8,22 @@ import {
 } from "../../repository/Organization";
 import "./Demands.css"
 import {getAllDemandCategories} from "../../repository/DemandCategory";
-import {getAllDemandsByCategory, getDemandById} from "../../repository/Demand";
+import {addNewDemand, getAllDemandsByCategory, getDemandById} from "../../repository/Demand";
+import ReactModal from 'react-modal';
+
+const customStyles = {
+    content: {
+        top: '40%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        background: 'whitesmoke'
+    }
+};
+
+ReactModal.setAppElement(document.getElementById('root'));
 
 class DemandsForLoggedOrganization extends Component {
 
@@ -24,7 +39,9 @@ class DemandsForLoggedOrganization extends Component {
             demandQuantity: "",
             addDemandPanel: false,
             validationMessage: "",
-            clickedDemandId: -1
+            clickedDemandId: -1,
+            modalIsOpen: false,
+            addNewDemandMessage: ""
         }
     }
 
@@ -121,8 +138,9 @@ class DemandsForLoggedOrganization extends Component {
                         }
                     </td>
                     <td>
-                        <button onClick={() => this.onChangeDemandQuantity(d.OrganizationDemand.demand.id, d.OrganizationDemand.quantity)}
-                                className="btn btn-sm btn-primary btn-block">Промени
+                        <button
+                            onClick={() => this.onChangeDemandQuantity(d.OrganizationDemand.demand.id, d.OrganizationDemand.quantity)}
+                            className="btn btn-sm btn-primary btn-block">Промени
                         </button>
                         <button onClick={() => this.onDeleteDemand(d.OrganizationDemand.demand.id)}
                                 className="btn btn-sm btn-danger btn-block">Избриши
@@ -221,6 +239,45 @@ class DemandsForLoggedOrganization extends Component {
         });
     };
 
+    onAddNewDemand = (event) => {
+
+        event.preventDefault();
+
+        var demandRequest = {
+            name: event.target.demand.value,
+            quantity: event.target.quantity.value,
+            organization: this.state.loggedOrganization.name
+        };
+
+        if (!demandRequest.name || !demandRequest.quantity || !demandRequest.organization) {
+            this.setState({
+                addNewDemandMessage: "Внесете ги податоците."
+            });
+            return;
+        }
+
+        addNewDemand(demandRequest, getJwt());
+        this.setState({
+            addNewDemandMessage: "Барањето е успешно !"
+        }, () => {
+            setTimeout(() => {
+                this.setState({modalIsOpen: false});
+            }, 800)
+        })
+    };
+
+    openModal = () => {
+        this.setState({
+            modalIsOpen: true,
+        });
+    };
+
+    closeModal = () => {
+        this.setState({
+            modalIsOpen: false,
+        });
+    };
+
     onEditDemand = () => {
         let organizationId = this.state.loggedOrganization.id;
         let demandId = this.state.demand.id;
@@ -273,7 +330,7 @@ class DemandsForLoggedOrganization extends Component {
                     </td>
                     <td>
                         <span>
-                            <input id="quantity" value={this.state.demandQuantity}
+                            <input className="quantity" value={this.state.demandQuantity}
                                    onChange={this.onInsertDemandQuantity}/>
                             <span className="p-2">{this.state.demandUnit}</span>
                             {this.state.validationMessage &&
@@ -283,6 +340,8 @@ class DemandsForLoggedOrganization extends Component {
                     </td>
                     <td>
                         <button onClick={this.onInsertDemand} className="btn btn-success btn-block">Внеси</button>
+                        <button onClick={this.openModal} className="btn btn-primary btn-block">Не е на листата ?
+                        </button>
                     </td>
                 </tr>
             )
@@ -329,6 +388,34 @@ class DemandsForLoggedOrganization extends Component {
                     <div className="row mb-5">
                         <button onClick={this.onAddDemand} className="btn btn-success mb-5">Внеси потреба</button>
                     </div>
+                    <ReactModal
+                        isOpen={this.state.modalIsOpen}
+                        onRequestClose={this.closeModal}
+                        style={customStyles}
+                    >
+                        <form onSubmit={this.onAddNewDemand}>
+                            <div className="p-1">
+                                <span>
+                                   <p>
+                                       Внесете потреба:
+                                       <input className="m-1 quantity" name="demand" type="text"/>
+                                   </p>
+                                </span>
+                            </div>
+                            <div className="p-1">
+                                <span>
+                                   <p>
+                                       Внесете количина:
+                                       <input className="m-1 quantity" name="quantity"/>
+                                   </p>
+                                </span>
+                            </div>
+                            <button type="submit" className="btn btn-success btn-block">Испрати барање</button>
+                        </form>
+                        {this.state.addNewDemandMessage &&
+                        <div className="text-center text-success">{this.state.addNewDemandMessage}</div>
+                        }
+                    </ReactModal>
                 </div>
             </div>
         )

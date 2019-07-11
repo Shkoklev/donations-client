@@ -166,9 +166,16 @@ class Navbar extends Component {
                                 <Link className="nav-link text-white" to="/contact"> Контакт
                                 </Link>
                             </li>
+                            {(this.state.loggedAsDonor || this.state.loggedAsOrganization) &&
                             <li className="nav-item navli">
-                                <button className="btn" style={{background: "#3DBD5D", color: "white"}}>Донирај сега
-                                </button>
+                                <Link className="nav-link text-white" to="/donors/rank_list"> Ранг листа
+                                </Link>
+                            </li>
+                            }
+                            <li className="nav-item navli">
+                                <Link to="/organizations" className="btn"
+                                      style={{background: "#3DBD5D", color: "white"}}>Донирај сега
+                                </Link>
                             </li>
                         </ul>
 

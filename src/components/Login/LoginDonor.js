@@ -59,12 +59,14 @@ class LoginDonor extends Component {
                                 <div className="form-group">
                                     <input type="email"
                                            className="form-control form-control-lg" placeholder="Email адреса"
+                                           autoComplete="off"
                                            name="email"
                                            id="email" required/>
                                 </div>
                                 <div className="form-group">
                                     <input type="password"
                                            className="form-control form-control-lg" placeholder="Пасворд"
+                                           autoComplete="off"
                                            name="password"
                                            id="password" required/>
                                 </div>

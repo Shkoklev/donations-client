@@ -9,22 +9,10 @@ const aboutUs = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <h3 className="text-dark display-4 text-center">Ova e nekakov tekst za vo about us</h3>
-                            <p className="text-dark  text-center">doniraj.mk е направена од двајца студенти на финки, со
-                                цел сите оние кои што сакаат да бидат хумани и да донираат на оние кои што им е
-                                потребно.
-                                Станува збор за организации, државни институции... кои што имаат потреба од најразлични
-                                работи...
-                                ......
-                                бла бла...
-
-                                Доколку сакате вашата организација да биде дел од нашата страна слободно контактирајте
-                                не.
-
-                                Што треба да исполнувате за да бидете дел од doniraj.mk ?
-                                -нешто
-                                -нешто друго
-                                -бла бла</p>
+                            <h4 className="text-dark display-4 text-center">За нас</h4>
+                            <p className="text-dark  text-center">
+                                Ова е некаков текст...
+                            </p>
                         </div>
                     </div>
                 </div>

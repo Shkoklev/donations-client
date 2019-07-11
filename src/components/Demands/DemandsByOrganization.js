@@ -287,6 +287,9 @@ class DemandsByOrganization extends Component {
                             </form>
                         </div>
                     </ReactModal>
+                    <hr/>
+                    <hr/>
+                    <hr/>
                 </div>
             </div>
         );

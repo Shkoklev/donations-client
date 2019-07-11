@@ -59,6 +59,7 @@ class LoginOrganization extends Component {
                                     <input type="email"
                                            className="form-control form-control-lg"
                                            placeholder="Email адреса на вашата организација"
+                                           autoComplete="off"
                                            name="email"
                                            id="email" required/>
                                 </div>
@@ -66,6 +67,7 @@ class LoginOrganization extends Component {
                                     <input type="password"
                                            className="form-control form-control-lg"
                                            placeholder="Пасворд на вашата организација"
+                                           autoComplete="off"
                                            name="password"
                                            id="password" required/>
                                 </div>

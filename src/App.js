@@ -15,6 +15,7 @@ import LoginOrganization from "./components/Login/LoginOrganization";
 import OrganizationDonations from "./components/Donations/OrganizationDonations";
 import DemandsForLoggedOrganization from "./components/Demands/DemandsForLoggedOrganization";
 import DonorDonations from "./components/Donations/DonorDonations";
+import RankList from "./components/RankList/RankList";
 
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
                         <Route exact path="/organization/profile" component={DemandsForLoggedOrganization}/>
                         <Route exact path="/organizations/:id/demands" component={DemandsByOrganization}/>
                         <Route exact path="/donor/donations" component={DonorDonations}/>
+                        <Route exact path="/donors/rank_list" component={RankList}/>
                         <Route render={(props) => <Error {...props} pathDoesNotExist="Страницата не е пронајдена."/>}/>
                     </Switch>
                     <Footer/>

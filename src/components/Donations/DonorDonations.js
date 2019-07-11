@@ -98,10 +98,6 @@ class DonorDonations extends Component {
             });
     };
 
-    shareOnFacebook = (donationId) => {
-
-    };
-
     openModal = (donationId) => {
         this.setState({
             modalIsOpen: true,
@@ -146,16 +142,6 @@ class DonorDonations extends Component {
                         </a>
                     </td>
                     }
-                    {!this.state.pendingDonations &&
-                    <td style={{width: '10%'}}>
-                        <a href="#" className="table-link">
-                            <div onClick={() => this.shareOnFacebook(donation.id)} className="fa-stack">
-                                <i className="fa fa-square fa-stack-2x"></i>
-                                <i className="fa fa-facebook-square fa-stack-1x fa-inverse"></i>
-                            </div>
-                        </a>
-                    </td>
-                    }
                 </tr>
             )
         });
@@ -187,7 +173,7 @@ class DonorDonations extends Component {
                                             <th><span>Донација</span></th>
                                             {this.state.pendingDonations && <th><span>Валидност до</span></th>}
                                             {!this.state.pendingDonations && <th><span>Датум</span></th>}
-                                            <th>&nbsp;</th>
+                                            {this.state.pendingDonations &&  <th>&nbsp;</th> }
                                         </tr>
                                         </thead>
                                         <tbody>

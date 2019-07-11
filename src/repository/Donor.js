@@ -58,3 +58,11 @@ export const editDonor = (jwt, donorId, formData) => {
     });
 };
 
+export const getAllDonors = (jwt) => {
+    return fetch(`http://localhost:8080/donors`, {
+        headers: {
+            Authorization: `Bearer ${jwt}`
+        },
+        method: "GET"
+    });
+};

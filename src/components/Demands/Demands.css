@@ -10,7 +10,12 @@
     border: 1px solid lightskyblue;
 }
 
-#quantity {
+.quantity {
     width: 100px;
     border: 1px solid black;
+}
+
+hr {
+    clear: both;
+    visibility: hidden;
 }
